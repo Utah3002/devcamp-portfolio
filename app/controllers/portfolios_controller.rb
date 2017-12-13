@@ -7,6 +7,14 @@ class PortfoliosController < ApplicationController
     @portfolio_item = Portfolio.by_position
   end
   
+  def sort
+    params[:order].each do |key, value|
+      Portfolio.find(value[:id]).update(position: value[:position])
+    end
+  
+    render nothing: true
+  end
+  
   def angular
     @angular_portfolio_item = Portfolio.angular
   end
@@ -19,7 +27,7 @@ class PortfoliosController < ApplicationController
   def create
     @portfolio_item = Portfolio.new(portfolio_params)
 
-     respond_to do |format|
+      respond_to do |format|
        if @portfolio_item.save
           format.html { redirect_to portfolios_path, notice: 'Portfolio item is now live.' }
         else
@@ -33,7 +41,7 @@ class PortfoliosController < ApplicationController
     
   def update
        
-     respond_to do |format|
+    respond_to do |format|
       if @portfolio_item.update(portfolio_params)
         format.html { redirect_to portfolios_path, notice: 'The record was successfully updated.' }
       else
