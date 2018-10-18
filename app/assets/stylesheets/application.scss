@@ -229,7 +229,6 @@ body {
 .app-card-container{
   color:black;
   text-align: left;
-  height: 100%;
 }
 
 .app-card-container > .card {
@@ -243,4 +242,10 @@ body {
 
 .app-card-container a {
   color: blue;
+}
+
+.card-block {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 7px;
 }
